@@ -51,6 +51,9 @@
     
 	<!-- mathjax -->
 	
+	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.23/dist/fancybox/fancybox.css" />
+	
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Qingyi" type="application/atom+xml">
 </head>
 
@@ -81,6 +84,8 @@
    --><!--
      --><li><a href="/archives/">归档</a></li><!--
    --><!--
+     --><li><a href="/tags/">标签</a></li><!--
+   --><!--
      --><li><a target="_blank" rel="noopener" href="https://github.com/Qingyi1315">项目</a></li><!--
    --><!--
      --><li><a href="/search/">搜索</a></li><!--
@@ -109,7 +114,7 @@
     <div class="meta">
       
         
-          <time datetime="2025-03-16T09:29:37.838Z" class="dt-published" itemprop="datePublished">2025-03-16</time>
+          <time datetime="2025-03-17T13:33:00.000Z" class="dt-published" itemprop="datePublished">2025-03-17</time>
         
       
     </div>
@@ -117,31 +122,7 @@
 
         <span>
     
-        <a class="" href="/2025/03/16/test/">test</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-03-14T11:28:48.819Z" class="dt-published" itemprop="datePublished">2025-03-14</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2025/03/14/hello-world/">Hello World</a>
+        <a class="" href="/2025/03/17/%E6%95%B0%E5%AD%97%E6%97%B6%E4%BB%A3%E9%98%85%E8%AF%BB%E4%B9%A0%E6%83%AF%EF%BC%9A%E7%8E%B0%E7%8A%B6%E3%80%81%E6%8C%91%E6%88%98%E4%B8%8E%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B/">数字时代的阅读习惯</a>
     
 
 
@@ -172,6 +153,8 @@
      --><!--
        --><li><a href="/archives/">归档</a></li><!--
      --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Qingyi1315">项目</a></li><!--
      --><!--
        --><li><a href="/search/">搜索</a></li><!--
@@ -181,6 +164,80 @@
       </ul>
     </nav>
   </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 1. 检测模型加载
+  const checkModel = setInterval(() => {
+    const canvas = document.querySelector('#live2d-widget canvas');
+    if (canvas) {
+      clearInterval(checkModel);
+      initInteraction(canvas);
+    }
+  }, 500);
+
+  function initInteraction(canvas) {
+    // 2. 创建文字元素
+    const textDiv = document.createElement('div');
+    textDiv.id = 'live2d-click-text';
+    textDiv.style.cssText = `
+      position: fixed;
+      z-index: 2147483647;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 10px;
+      display: none;
+      pointer-events: none;
+      font-family: sans-serif;
+    `;
+    document.body.appendChild(textDiv);
+
+    // 定义不同的文字内容
+    const clickTexts = [
+      '戳中啦！(σﾟ∀ﾟ)σ',
+      '好耶！٩(๑^o^๑)۶',
+      '哇哦！(๑・̀ㅁ・́๑)✧',
+      '哈哈！(๑・̀ㅁ・́๑)✧',
+      '嘿嘿！(๑・̀ㅁ・́๑)✧'
+    ];
+
+    // 用于存储定时器ID
+    let timeoutId = null;
+
+    // 3. 点击事件处理
+    function handleClick(e) {
+      // 清除之前的定时器
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
+
+      // 计算右侧定位
+      const modelRect = canvas.getBoundingClientRect();
+      const textRight = window.innerWidth - modelRect.right + 20;
+      const textTop = modelRect.top + modelRect.height / 2;
+
+      // 随机选择一个文字内容
+      const randomIndex = Math.floor(Math.random() * clickTexts.length);
+      const randomText = clickTexts[randomIndex];
+
+      // 更新文字
+      textDiv.style.display = 'block';
+      textDiv.style.right = `${textRight}px`;
+      textDiv.style.top = `${textTop}px`;
+      textDiv.innerHTML = randomText;
+
+      // 3秒后隐藏
+      timeoutId = setTimeout(() => {
+        textDiv.style.display = 'none';
+      }, 3000);
+    }
+
+    // 4. 绑定事件
+    canvas.addEventListener('click', handleClick);
+    canvas.addEventListener('touchstart', handleClick);
+  }
+});
+</script>
 </footer>
 
     </div>
@@ -212,6 +269,19 @@
 <!-- Disqus Comments -->
 
 <!-- utterances Comments -->
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.23/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Fancybox.bind("[data-fancybox]", {
+        closeOnContentClick: false,
+        Thumbs: false,
+        Toolbar: false
+      });
+    });
+  </script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/assets/nico.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 </html>
